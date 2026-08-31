@@ -2077,12 +2077,13 @@ export default function Portfolio() {
           border-bottom: 1px solid var(--border);
         }
         .pf-nav-inner {
-          max-width: 1120px;
+          max-width: 1320px;
           margin: 0 auto;
           padding: 14px 24px;
           display: flex;
           align-items: center;
           justify-content: space-between;
+          gap: 14px;
         }
         .pf-nav-brand {
           display: flex;
@@ -2090,26 +2091,31 @@ export default function Portfolio() {
           gap: 10px;
           font-size: 13px;
           color: var(--text-muted);
+          flex-shrink: 0;
         }
         .pf-dot-row { display: flex; gap: 6px; margin-right: 6px; }
         .pf-dot { width: 8px; height: 8px; border-radius: 50%; }
         .pf-dot.red { background: #EF4646; }
         .pf-dot.amber { background: #F5B942; }
         .pf-dot.green { background: #34D399; }
+        .pf-nav-brand-text { white-space: nowrap; }
         .pf-nav-links {
           display: flex;
-          gap: 28px;
+          gap: clamp(10px, 1.3vw, 26px);
+          flex-shrink: 1;
+          min-width: 0;
         }
         .pf-nav-link {
           background: none;
           border: none;
           color: var(--text-muted);
-          font-size: 13px;
+          font-size: clamp(11.5px, 0.95vw, 13px);
           font-family: 'JetBrains Mono', monospace;
           cursor: pointer;
-          padding: 6px 2px;
+          padding: 6px 1px;
           transition: color 0.15s ease;
-          letter-spacing: 0.02em;
+          letter-spacing: 0.01em;
+          white-space: nowrap;
         }
         .pf-nav-link:hover { color: var(--cyan); }
         .pf-nav-link {
@@ -2130,15 +2136,17 @@ export default function Portfolio() {
         .pf-nav-cta {
           display: flex;
           align-items: center;
-          gap: 8px;
-          font-size: 13px;
+          gap: 7px;
+          font-size: 12.5px;
           font-family: 'JetBrains Mono', monospace;
           color: var(--cyan);
           border: 1px solid rgba(8,145,178,0.4);
-          padding: 7px 14px;
+          padding: 7px 12px;
           border-radius: 6px;
           text-decoration: none;
           transition: background 0.15s ease;
+          flex-shrink: 0;
+          white-space: nowrap;
         }
         .pf-nav-cta:hover { background: rgba(8,145,178,0.08); }
         .pf-lang-switch {
@@ -2149,6 +2157,7 @@ export default function Portfolio() {
           border: 1px solid var(--border);
           border-radius: 8px;
           background: var(--panel);
+          flex-shrink: 0;
         }
         .pf-lang-flag {
           display: flex;
@@ -2193,6 +2202,7 @@ export default function Portfolio() {
           border: 1px solid var(--border);
           border-radius: 8px;
           background: var(--panel);
+          flex-shrink: 0;
         }
         .pf-theme-btn {
           display: flex;
@@ -3468,6 +3478,10 @@ export default function Portfolio() {
           color: var(--text-dim);
         }
 
+        @media (max-width: 1360px) and (min-width: 861px) {
+          .pf-nav-brand-text { display: none; }
+        }
+
         @media (max-width: 860px) {
           .pf-nav-links { display: none; }
           .pf-nav-cta { display: none; }
@@ -3575,7 +3589,7 @@ export default function Portfolio() {
               <span className="pf-dot amber" />
               <span className="pf-dot green" />
             </span>
-            julian@infraestructura:~$
+            <span className="pf-nav-brand-text">julian@infraestructura:~$</span>
           </div>
           <div className="pf-nav-links">
             {NAV_LINKS.map((n) => (
